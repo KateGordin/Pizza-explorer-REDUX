@@ -14,7 +14,6 @@ export default function AddPizzaForm() {
     // to make sure that the form does not redirect (which is normal browser behavior)
     event.preventDefault();
 
-    // TODO:
     // - dispatch an action that sends the new pizza to the store
     dispatch(
       addPizza({

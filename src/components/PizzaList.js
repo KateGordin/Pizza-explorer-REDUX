@@ -2,10 +2,13 @@
 import { useSelector } from "react-redux";
 import { selectUser } from "../store/user/selectors";
 import { selectPizzas } from "../store/pizzas/selectors";
+import { toggleFavorite } from "../store/pizzas/actions";
+import { useDispatch } from "react-redux";
 
 export default function PizzaList() {
   const user = useSelector(selectUser);
   const pizzas = useSelector(selectPizzas);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -17,7 +20,17 @@ export default function PizzaList() {
       <ul>
         {pizzas.map((onePizza) => (
           <li key={onePizza.id}>
-            <h3>{onePizza.name}</h3>
+            <h3>
+              {" "}
+              <button
+                onClick={() => {
+                  dispatch(toggleFavorite(onePizza.id));
+                }}
+              >
+                {user.favorites.includes(onePizza.id) ? "❤️" : "♡"}
+              </button>{" "}
+              {onePizza.name}
+            </h3>
             <strong>Description:</strong> {onePizza.description}
             <p>
               <strong> Bought: </strong>

@@ -33,7 +33,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case "pizzas/add": {
+    case "pizzas/add":
       return {
         ...state,
         allPizzas: [
@@ -47,10 +47,7 @@ export default function reducer(state = initialState, action) {
           },
         ],
       };
-    }
-
-    default: {
+    default:
       return state;
-    }
   }
 }
