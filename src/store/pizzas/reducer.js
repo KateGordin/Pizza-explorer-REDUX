@@ -8,7 +8,7 @@ const initialState = {
         "The typical Neapolitan pizza, made with San Marzano tomatoes, mozzarella cheese, fresh basil, salt and extra-virgin olive oil.",
       bought: 5,
       image:
-        "https://imgp2.schaer.com/sites/default/files/styles/header/public/2017-09/HeaderProducts_Pizza%20Margherita.jpg?itok=Fz-7_a56",
+        "https://kookidee.nl/wp-content/uploads/2018/11/pizza-margherita-05.jpg",
     },
     {
       id: 67283,
@@ -33,6 +33,22 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case "pizzas/add": {
+      return {
+        ...state,
+        allPizzas: [
+          ...state.allPizzas,
+          {
+            name: action.payload.name,
+            description: action.payload.description,
+            image: action.payload.image,
+            id: Math.random(),
+            bought: 0,
+          },
+        ],
+      };
+    }
+
     default: {
       return state;
     }

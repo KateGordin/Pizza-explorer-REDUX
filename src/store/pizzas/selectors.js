@@ -12,4 +12,8 @@ export const selectMostBoughtPizza = (reduxState) => {
   });
 };
 
-export const selectPizzas = (reduxState) => reduxState.pizzas.allPizzas;
+export const selectPizzas = (reduxState) => {
+  const clonedPizzasArray = [...reduxState.pizzas.allPizzas];
+
+  return clonedPizzasArray.sort((a, b) => b.bought - a.bought);
+};
